@@ -5,6 +5,7 @@ import insta from "../../../instagram.png";
 
 const Footer = () => {
   return (
+    
     <div className="w-full bg-green-900 text-white mt-16">
       
       {/* Main Content */}
