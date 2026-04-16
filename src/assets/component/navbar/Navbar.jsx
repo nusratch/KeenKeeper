@@ -41,6 +41,7 @@ const Nav = () => {
               {item.name}
             </Link>
           ))}
+          
         </div>
 
         <div className="md:hidden">
