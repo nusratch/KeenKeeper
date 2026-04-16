@@ -5,10 +5,10 @@ import insta from "../../../instagram.png";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#025e21cb] text-white mt-16">
+    <div className="w-full bg-green-900 text-white mt-16">
       
       {/* Main Content */}
-      <div className="max-w-5xl mx-auto px-4 py-10 text-center border border-dashed border-gray-500 rounded-lg">
+      <div className="max-w-5xl mx-auto px-4 py-10 text-center  border-dashed border-gray-500 rounded-lg">
 
         <h2 className="text-2xl sm:text-3xl font-semibold mb-3">
           KeenKeeper

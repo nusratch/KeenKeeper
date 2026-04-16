@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/data.json")
@@ -20,9 +22,17 @@ const Friends = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {friends.map((friend) => (
-            <div key={friend.id} className="bg-white shadow-md rounded-xl p-5 text-center">
+            <div
+              key={friend.id}
+              onClick={() => navigate("/timeline")}
+              className="bg-white shadow-md rounded-xl p-5 text-center cursor-pointer hover:shadow-lg transition"
+            >
               
-              <img src={friend.picture} className="w-16 h-16 mx-auto rounded-full mb-3" />
+              <img
+                src={friend.picture}
+                alt=""
+                className="w-16 h-16 mx-auto rounded-full mb-3"
+              />
 
               <h3 className="font-semibold">{friend.name}</h3>
 
@@ -30,9 +40,12 @@ const Friends = () => {
                 {friend.days_since_contact}d ago
               </p>
 
-              <div className="flex justify-center gap-2 mb-2">
+              <div className="flex justify-center gap-2 mb-2 flex-wrap">
                 {friend.tags.map((tag, i) => (
-                  <span key={i} className="text-xs px-3 py-1 rounded bg-green-100 text-green-600">
+                  <span
+                    key={i}
+                    className="text-xs px-3 py-1 rounded bg-green-100 text-green-600"
+                  >
                     {tag}
                   </span>
                 ))}

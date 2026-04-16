@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import "../../../App.css";
 import logo from "../../logo.png";
+import { FaHome, FaClock, FaChartLine } from "react-icons/fa";
 
 const Nav = () => {
   const [active, setActive] = useState("Home");
 
-  const menu = ["Home", "Timeline", "Stats"];
+  const menu = [
+    { name: "Home", icon: <FaHome />, path: "/", msg: "Going to Home 🏠" },
+    { name: "Timeline", icon: <FaClock />, path: "/timeline", msg: "Opening Timeline ⏳" },
+    { name: "Stats", icon: <FaChartLine />, path: "/stats", msg: "Viewing Stats 📊" },
+  ];
 
   return (
     <div className="w-screen bg-white border-b border-gray-200 relative left-1/2 right-1/2 -mx-[50vw]">
@@ -17,17 +24,22 @@ const Nav = () => {
 
         <div className="hidden md:flex items-center bg-gray-100 p-1 rounded-lg gap-2">
           {menu.map((item) => (
-            <button
-              key={item}
-              onClick={() => setActive(item)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition ${
-                active === item
+            <Link
+              key={item.name}
+              to={item.path}
+              onClick={() => {
+                setActive(item.name);
+                toast.success(item.msg);
+              }}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition ${
+                active === item.name
                   ? "bg-green-900 text-white"
                   : "text-gray-600 hover:bg-gray-200"
               }`}
             >
-              {item}
-            </button>
+              {item.icon}
+              {item.name}
+            </Link>
           ))}
         </div>
 
@@ -49,13 +61,24 @@ const Nav = () => {
                 />
               </svg>
             </label>
+
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-white rounded-box w-40 right-0"
             >
               {menu.map((item) => (
-                <li key={item}>
-                  <a onClick={() => setActive(item)}>{item}</a>
+                <li key={item.name}>
+                  <Link
+                    to={item.path}
+                    onClick={() => {
+                      setActive(item.name);
+                      toast.success(item.msg);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    {item.icon}
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>

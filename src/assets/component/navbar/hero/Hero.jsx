@@ -22,7 +22,7 @@ const Hero = () => {
           Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.
         </p>
 
-        <button className="bg-green-900 text-white px-4 sm:px-5 py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-green-800 transition">
+        <button className="bg-green-900 text-white px-6 sm:px-5 py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-green-800 transition">
           + Add a Friend
         </button>
       </div>
