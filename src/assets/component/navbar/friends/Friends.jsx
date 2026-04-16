@@ -3,17 +3,30 @@ import { useNavigate } from "react-router-dom";
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/data.json")
       .then((res) => res.json())
-      .then((data) => setFriends(data));
+      .then((data) => {
+        setTimeout(() => {
+          setFriends(data);
+          setLoading(false);
+        }, 1000);
+      });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[50vh]">
+        <div className="w-10 h-10 border-4 border-green-900 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-12 mt-10 flex justify-center">
-      
       <div className="w-full max-w-xl sm:max-w-2xl md:max-w-4xl">
 
         <h2 className="text-xl font-semibold text-gray-800 mb-6">
@@ -24,10 +37,9 @@ const Friends = () => {
           {friends.map((friend) => (
             <div
               key={friend.id}
-              onClick={() => navigate("/timeline")}
+              onClick={() => navigate(`/friend/${friend.id}`)}
               className="bg-white shadow-md rounded-xl p-5 text-center cursor-pointer hover:shadow-lg transition"
             >
-              
               <img
                 src={friend.picture}
                 alt=""

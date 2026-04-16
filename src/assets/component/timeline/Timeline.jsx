@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const Timeline = () => {
   return (
@@ -14,7 +15,7 @@ const Timeline = () => {
             />
             <h2 className="font-semibold text-lg">Emma Wilson</h2>
 
-            <div className="flex flex-col items-center  gap-2 mt-2">
+            <div className="flex flex-col items-center gap-2 mt-2">
               <span className="bg-red-100 text-red-500 px-2 py-1 text-xs rounded-full">WORK</span>
               <span className="bg-green-100 text-green-600 px-2 py-1 text-xs rounded-full">FAMILY</span>
             </div>
@@ -29,17 +30,26 @@ const Timeline = () => {
           </div>
 
           <div className="bg-white rounded-xl shadow p-4 space-y-3 text-sm">
-            <div className="flex items-center gap-3 p-2 shadow-md rounded-lg hover:bg-gray-100 cursor-pointer">
+            <div
+              onClick={() => toast.info("Snoozed for 2 weeks ⏰")}
+              className="flex items-center gap-3 p-2 shadow-md rounded-lg hover:bg-gray-100 cursor-pointer"
+            >
               <span>⏰</span>
               <p className="text-blue-500">Snooze 2 Weeks</p>
             </div>
 
-            <div className="flex items-center gap-3 p-2 shadow-md rounded-lg hover:bg-gray-100 cursor-pointer">
+            <div
+              onClick={() => toast.info("Archived 📁")}
+              className="flex items-center gap-3 p-2 shadow-md rounded-lg hover:bg-gray-100 cursor-pointer"
+            >
               <span>📁</span>
               <p className="text-gray-600">Archive</p>
             </div>
 
-            <div className="flex items-center gap-3 p-2 shadow-md rounded-lg hover:bg-gray-100 cursor-pointer">
+            <div
+              onClick={() => toast.error("Deleted 🗑")}
+              className="flex items-center gap-3 p-2 shadow-md rounded-lg hover:bg-gray-100 cursor-pointer"
+            >
               <span>🗑</span>
               <p className="text-red-500">Delete</p>
             </div>
@@ -78,17 +88,26 @@ const Timeline = () => {
             <h3 className="font-semibold mb-4">Quick Check-in</h3>
 
             <div className="grid grid-cols-3 gap-4">
-              <div className="flex flex-col items-center justify-center p-4 rounded-xl shadow-md hover:bg-gray-50 cursor-pointer">
+              <div
+                onClick={() => toast.success("Calling... 📞")}
+                className="flex flex-col items-center justify-center p-4 rounded-xl shadow-md hover:bg-gray-50 cursor-pointer"
+              >
                 <span className="text-xl">📞</span>
                 <p className="text-sm mt-2">Call</p>
               </div>
 
-              <div className="flex flex-col items-center justify-center p-4 rounded-xl shadow-md hover:bg-gray-50 cursor-pointer">
+              <div
+                onClick={() => toast.info("Opening chat... 💬")}
+                className="flex flex-col items-center justify-center p-4 rounded-xl shadow-md hover:bg-gray-50 cursor-pointer"
+              >
                 <span className="text-xl">💬</span>
                 <p className="text-sm mt-2">Text</p>
               </div>
 
-              <div className="flex flex-col items-center justify-center p-4 rounded-xl shadow-md hover:bg-gray-50 cursor-pointer">
+              <div
+                onClick={() => toast("Starting video call... 🎥")}
+                className="flex flex-col items-center justify-center p-4 rounded-xl shadow-md hover:bg-gray-50 cursor-pointer"
+              >
                 <span className="text-xl">🎥</span>
                 <p className="text-sm mt-2">Video</p>
               </div>
