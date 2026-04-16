@@ -51,6 +51,7 @@ const Stats = () => {
                 <Legend />
               </PieChart>
             </ResponsiveContainer>
+            
           </div>
 
         </div>
